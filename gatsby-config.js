@@ -1,14 +1,17 @@
 module.exports = {
+  // TODO: change metadata
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `何にしますか？`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `KiWeng`,
+      summary: `A Homo sapiens.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `le blog`,
+    siteUrl: `https://kiweng.github.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `zh_weng`,
+      email: 'wzh.k@outlook.com',
+      github: 'KiWeng'
     },
   },
   plugins: [

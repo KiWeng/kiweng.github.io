@@ -20,6 +20,8 @@ const Bio = () => {
           }
           social {
             twitter
+            email
+            github
           }
         }
       }
@@ -30,6 +32,7 @@ const Bio = () => {
   const author = data.site.siteMetadata?.author
   const social = data.site.siteMetadata?.social
 
+  // TODO: change the Bio component
   return (
     <div className="bio">
       <StaticImage
@@ -37,18 +40,24 @@ const Bio = () => {
         layout="fixed"
         formats={["AUTO", "WEBP", "AVIF"]}
         src="../images/profile-pic.png"
-        width={50}
-        height={50}
+        width={75}
+        height={75}
         quality={95}
         alt="Profile picture"
       />
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
-          {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+          Written by <strong>{author.name}</strong> <br />
+          {author?.summary || null}
+          {" Click to "}
+          <a href={`mailto:${social?.email || ``}`}>harass him</a>
+          .
+          <br />
+          Or{" "}
+          <a href={`https://github.com/${social?.github || ``}`}>
+            see what he is messing up with
           </a>
+          .
         </p>
       )}
     </div>

@@ -9,6 +9,7 @@ import Comment from "../components/comment"
 const BlogPostTemplate = ({ data, location }) => {
   const commentBox = React.createRef()
 
+  // adding comment support using utterances
   React.useEffect(() => {
     const scriptEl = document.createElement("script")
     scriptEl.async = true
@@ -19,11 +20,11 @@ const BlogPostTemplate = ({ data, location }) => {
     scriptEl.setAttribute("theme", "github-light")
     scriptEl.setAttribute("label", "Comment")
     scriptEl.setAttribute("crossorigin", "anonymous")
-      if (commentBox && commentBox.current) {
-          commentBox.current.appendChild(scriptEl)
-      } else {
-          console.log("error adding utterances comments on: ${commentBox}")
-      }
+    if (commentBox && commentBox.current) {
+      commentBox.current.appendChild(scriptEl)
+    } else {
+      console.log("error adding utterances comments on: ${commentBox}")
+    }
   }, [])
 
   const post = data.markdownRemark
