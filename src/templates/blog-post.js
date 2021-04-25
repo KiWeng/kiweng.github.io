@@ -4,8 +4,28 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Comment from "../components/comment"
 
 const BlogPostTemplate = ({ data, location }) => {
+  const commentBox = React.createRef()
+
+  React.useEffect(() => {
+    const scriptEl = document.createElement("script")
+    scriptEl.async = true
+    scriptEl.src = "https://utteranc.es/client.js"
+    scriptEl.setAttribute("repo", "KiWeng/kiweng.github.io")
+    scriptEl.setAttribute("issue-term", "title")
+    scriptEl.setAttribute("id", "utterances")
+    scriptEl.setAttribute("theme", "github-light")
+    scriptEl.setAttribute("label", "Comment")
+    scriptEl.setAttribute("crossorigin", "anonymous")
+      if (commentBox && commentBox.current) {
+          commentBox.current.appendChild(scriptEl)
+      } else {
+          console.log("error adding utterances comments on: ${commentBox}")
+      }
+  }, [])
+
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
@@ -60,6 +80,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </li>
         </ul>
       </nav>
+      <Comment commentBox={commentBox} />
     </Layout>
   )
 }
